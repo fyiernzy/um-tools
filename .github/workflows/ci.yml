@@ -25,14 +25,11 @@ jobs:
           restore-keys: |
             maven-
 
-      - name: Run Maven Build
+      - name: Validate Project Structure and Dependencies
+        run: mvn -B validate --file pom.xml
+
+      - name: Build Maven Package
         run: mvn -B clean package --file pom.xml
 
-      - name: Run Checkstyle (Code Style Analysis)
-        run: mvn checkstyle:check
-
-      - name: Run PMD (Static Code Analysis)
-        run: mvn pmd:check
-
-      - name: Run SpotBugs (Bug Detection)
-        run: mvn spotbugs:check
+      - name: Verify Build and Run Tests
+        run: mvn -B verify --file pom.xml
