@@ -3,6 +3,9 @@ name: Maven Package
 on:
   release:
     types: [created]
+  push:
+    tags:
+      - '*SNAPSHOT'
 
 jobs:
   build:
@@ -31,11 +34,8 @@ jobs:
           restore-keys: |
             maven-
 
-      - name: Build and Test with Maven
-        run: mvn -B clean package
-        continue-on-error: false  # Fails the pipeline if the build is unsuccessful
-
-      - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      - name: Clean, Package, and Deploy with Maven
+        run: mvn -B clean deploy -s $GITHUB_WORKSPACE/settings.xml
+        if: github.event_name == 'release' || (github.event_name == 'push' && contains(github.ref, 'SNAPSHOT'))
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
