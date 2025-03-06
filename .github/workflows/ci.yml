@@ -25,11 +25,5 @@ jobs:
           restore-keys: |
             maven-
 
-      - name: Validate Project Structure and Dependencies
-        run: mvn -B validate --file pom.xml
-
-      - name: Build Maven Package
-        run: mvn -B clean package --file pom.xml
-
-      - name: Verify Build and Run Tests
-        run: mvn -B verify --file pom.xml
+      - name: Build and Verify with Maven
+        run: mvn -B clean verify --file pom.xml
