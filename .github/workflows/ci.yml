@@ -1,5 +1,5 @@
 name: um-tools CI
-run-name: ${{ github.actor }} is running um-tools CI/CD.
+run-name: ${{ github.actor }} pushes to ${{ github.event.repository.name }}/${{ github.ref }}
 on: [ push, pull_request ]
 
 jobs:
