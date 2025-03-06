@@ -9,12 +9,14 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.version>3.6.0</checkstyle.version>
         <spotbugs.version>4.9.2.0</spotbugs.version>
         <pmd.version>3.26.0</pmd.version>
+        <github.username>fyiernzy</github.username>
+        <github.repository>um-tools</github.repository>
     </properties>
 
     <dependencies>
@@ -93,4 +95,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub ${github.username} Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/${github.username}/${github.repository}</url>
+        </repository>
+    </distributionManagement>
 </project>
