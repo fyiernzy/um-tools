@@ -26,13 +26,13 @@ jobs:
             maven-
 
       - name: Run Maven Build
-        run: ./mvnw -B clean package --file pom.xml
+        run: mvn -B clean package --file pom.xml
 
       - name: Run Checkstyle (Code Style Analysis)
-        run: ./mvnw checkstyle:check
+        run: mvn checkstyle:check
 
       - name: Run PMD (Static Code Analysis)
-        run: ./mvnw pmd:check
+        run: mvn pmd:check
 
       - name: Run SpotBugs (Bug Detection)
-        run: ./mvnw spotbugs:check
+        run: mvn spotbugs:check
