@@ -4,6 +4,7 @@
  */
 package org.umtools.util;
 
+import java.nio.charset.StandardCharsets;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.function.Predicate;
@@ -17,7 +18,7 @@ import java.util.function.Supplier;
  */
 public final class InputUtils {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in, StandardCharsets.UTF_8);
 
     private InputUtils() {
 

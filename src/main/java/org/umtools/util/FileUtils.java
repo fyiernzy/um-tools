@@ -7,6 +7,7 @@ package org.umtools.util;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -31,7 +32,7 @@ public class FileUtils {
      * @since 1.0
      */
     public static void writeFile(String filePath, String content) {
-        try (PrintWriter writer = new PrintWriter(filePath)) {
+        try (PrintWriter writer = new PrintWriter(filePath, StandardCharsets.UTF_8)) {
             writer.println(content);
         } catch (IOException ex) {
             System.out.println("Failed to write to file: " + ex.getMessage());
