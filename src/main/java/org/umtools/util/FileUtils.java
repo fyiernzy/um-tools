@@ -18,6 +18,10 @@ import java.nio.file.Paths;
  */
 public class FileUtils {
 
+    private FileUtils() {
+
+    }
+
     /**
      * Writes the content to the file at the given path.
      * Do nothing if the file does not exist.
@@ -29,7 +33,8 @@ public class FileUtils {
     public static void writeFile(String filePath, String content) {
         try (PrintWriter writer = new PrintWriter(filePath)) {
             writer.println(content);
-        } catch (IOException _) {
+        } catch (IOException ex) {
+            System.out.println("Failed to write to file: " + ex.getMessage());
         }
     }
 
@@ -42,7 +47,8 @@ public class FileUtils {
     public static String readFileAsString(String filePath) {
         try {
             return Files.readString(Paths.get(filePath));
-        } catch (IOException _) {
+        } catch (IOException ex) {
+            System.out.println("Failed to read file: " + ex.getMessage());
             return null;
         }
     }

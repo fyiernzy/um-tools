@@ -16,7 +16,12 @@ import java.util.function.Supplier;
  * @since 1.0
  */
 public final class InputUtils {
+
     private static final Scanner SCANNER = new Scanner(System.in);
+
+    private InputUtils() {
+
+    }
 
     /**
      * Prompts the user for a string input.

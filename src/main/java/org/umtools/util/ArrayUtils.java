@@ -5,6 +5,10 @@
 package org.umtools.util;
 
 public class ArrayUtils {
+    private ArrayUtils() {
+
+    }
+
     /**
      * Swap two elements in an array
      *

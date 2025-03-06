@@ -20,6 +20,10 @@ import java.util.stream.Stream;
  */
 public class TableUtils {
 
+    private TableUtils() {
+
+    }
+
     /**
      * Renders a table with the given headers and data.
      *
@@ -37,7 +41,7 @@ public class TableUtils {
         table.addRule();
 
         for (String[] row : data) {
-            table.addRow((Object[]) data);
+            table.addRow((Object[]) row);
             table.addRule();
         }
 
@@ -54,6 +58,7 @@ public class TableUtils {
      * @since 1.0
      */
     public static void renderTable(String[] headers, List<String[]> data) {
+        checkData(data);
         renderTable(headers, data.toArray(String[][]::new));
     }
 

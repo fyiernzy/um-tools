@@ -16,51 +16,52 @@ import java.util.Collection;
  */
 public class Asserts {
 
+    private Asserts() {
+
+    }
+
     // ========================= Dimension Checks =========================
     public static void sameDimension(int[][] matrix1, int[][] matrix2, Class<? extends Exception> clazz, String message) {
-        equals(matrix1.length, matrix2.length, clazz, message);
+        equalInt(matrix1.length, matrix2.length, clazz, message);
         for (int i = 0; i < matrix1.length; i++) {
-            equals(matrix1[i].length, matrix2[i].length, clazz, message);
+            equalInt(matrix1[i].length, matrix2[i].length, clazz, message);
         }
     }
 
     public static void sameDimension(double[][] matrix1, double[][] matrix2, Class<? extends Exception> clazz, String message) {
-        equals(matrix1.length, matrix2.length, clazz, message);
+        equalInt(matrix1.length, matrix2.length, clazz, message);
         for (int i = 0; i < matrix1.length; i++) {
-            equals(matrix1[i].length, matrix2[i].length, clazz, message);
+            equalInt(matrix1[i].length, matrix2[i].length, clazz, message);
         }
     }
 
     public static void sameDimension(int[] array, int[] array2, Class<? extends Exception> clazz, String message) {
-        equals(array.length, array2.length, clazz, message);
+        equalInt(array.length, array2.length, clazz, message);
     }
 
     public static void sameDimension(double[] array, double[] array2, Class<? extends Exception> clazz, String message) {
-        equals(array.length, array2.length, clazz, message);
+        equalInt(array.length, array2.length, clazz, message);
     }
 
     public static void sameColumns(int[] array, int[][] matrix, Class<? extends Exception> clazz, String message) {
         for (int[] intArray : matrix) {
-            equals(array.length, intArray.length, clazz, message);
+            equalInt(array.length, intArray.length, clazz, message);
         }
     }
 
     public static void sameColumns(double[] array, double[][] matrix, Class<? extends Exception> clazz, String message) {
         for (double[] doubleArray : matrix) {
-            equals(array.length, doubleArray.length, clazz, message);
-        }
-    }
-
-    public static void regularMatrix(int[][] matrix, Class<? extends Exception> clazz, String message) {
-        int columns = matrix[0].length;
-        for (int[] row : matrix) {
-            equals(row.length, columns, clazz, message);
+            equalInt(array.length, doubleArray.length, clazz, message);
         }
     }
 
     // ========================= Comparison Checks =========================
-    public static void equals(int value, int target, Class<? extends Exception> clazz, String message) {
+    public static void equalInt(int value, int target, Class<? extends Exception> clazz, String message) {
         isTrue(value == target, clazz, message);
+    }
+
+    public static void equalDouble(double value, double target, double epsilon, Class<? extends Exception> clazz, String message) {
+        isTrue(Math.abs(value - target) < epsilon, clazz, message);
     }
 
     public static void smallerThan(int value, int target, Class<? extends Exception> clazz, String message) {
@@ -109,10 +110,6 @@ public class Asserts {
 
     public static void betweenExclusive(double value, double startExclusive, double endExclusive, Class<? extends Exception> clazz, String message) {
         isTrue(value > startExclusive && value < endExclusive, clazz, message);
-    }
-
-    public static void equals(double value, double target, double epsilon, Class<? extends Exception> clazz, String message) {
-        isTrue(Math.abs(value - target) < epsilon, clazz, message);
     }
 
     // ========================= Emptiness Checks =========================

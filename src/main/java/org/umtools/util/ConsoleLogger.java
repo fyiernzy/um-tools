@@ -20,6 +20,9 @@ public class ConsoleLogger {
     public static final Ansi.Color YELLOW = Ansi.Color.YELLOW;
     public static final Ansi.Color BLUE = Ansi.Color.BLUE;
 
+    private ConsoleLogger() {
+    }
+
     public static void logInfo(String message) {
         logBlue(message);
     }

@@ -13,6 +13,10 @@ import org.apache.commons.lang3.reflect.FieldUtils;
  * @since 1.0
  */
 public class ReflectionUtils {
+    private ReflectionUtils() {
+
+    }
+
     /**
      * Read the value of a field from an object
      *

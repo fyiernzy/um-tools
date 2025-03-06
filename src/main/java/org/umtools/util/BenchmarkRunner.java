@@ -14,6 +14,9 @@ package org.umtools.util;
  */
 public class BenchmarkRunner {
 
+    private BenchmarkRunner() {
+    }
+
     /**
      * Runs each benchmark and prints the average and maximum execution times.
      *
