@@ -54,8 +54,7 @@ public final class InputUtils {
                 nextInt(),
                 i -> true,
                 "Please enter a valid integer value.",
-                "Invalid input.",
-                SCANNER::hasNextInt
+                "Invalid input."
         );
     }
 
@@ -72,8 +71,7 @@ public final class InputUtils {
                 nextDouble(),
                 d -> true,
                 "Please enter a valid double value.",
-                "Invalid input.",
-                SCANNER::hasNextDouble
+                "Invalid input."
         );
     }
 
@@ -90,8 +88,7 @@ public final class InputUtils {
                 nextLong(),
                 l -> true,
                 "Please enter a valid long value.",
-                "Invalid input.",
-                SCANNER::hasNextLong
+                "Invalid input."
         );
     }
 
@@ -142,11 +139,10 @@ public final class InputUtils {
      * @param validator    a predicate to validate the input
      * @param errorMessage the message to display if an InputMismatchException occurs
      * @param invalidMsg   the message to display if the input fails validation
-     * @param tokenChecker a supplier that checks if the expected token is present
      * @return a validated input of type T
      * @since 1.0
      */
-    public static <T> T validatedTokenInput(String message, Supplier<T> supplier, Predicate<T> validator, String errorMessage, String invalidMsg, Supplier<Boolean> tokenChecker) {
+    public static <T> T validatedTokenInput(String message, Supplier<T> supplier, Predicate<T> validator, String errorMessage, String invalidMsg) {
         while (true) {
             try {
                 System.out.print(message);
@@ -159,7 +155,7 @@ public final class InputUtils {
                 System.out.println(errorMessage);
             } finally {
                 // If the expected token is not present, flush the rest of the line.
-                if (!tokenChecker.get() && SCANNER.hasNextLine()) {
+                if (SCANNER.hasNextLine()) {
                     SCANNER.nextLine();
                 }
             }
